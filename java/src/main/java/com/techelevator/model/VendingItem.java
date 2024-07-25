@@ -1,7 +1,7 @@
 package com.techelevator.model;
 
 public class VendingItem {
-    private int itemId;
+    private int id;
     private String name;
     private String type;
     private int price;
@@ -9,27 +9,27 @@ public class VendingItem {
     private String imageUrl;
 
     public VendingItem(){
-        itemId = -1;
+        id = -1;
         name = "Default name";
         type = "Default Type";
         price = -1;
         inventory = -1;
     }
 
-    public VendingItem(int itemId, String name, String type, int price, int inventory) {
-        this.itemId = itemId;
+    public VendingItem(int id, String name, String type, int price, int inventory) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.price = price;
         this.inventory = inventory;
     }
 
-    public int getItemId() {
-        return itemId;
+    public int getId() {
+        return id;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

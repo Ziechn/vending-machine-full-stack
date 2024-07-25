@@ -26,7 +26,7 @@ public class JdbcVendingItemDao implements VendingItemDao {
     public List<VendingItem> getAllVendingItems() {
 
         List<VendingItem> vendingItems = new ArrayList<>();
-        String sql = "SELECT * FROM vending_machine;";
+        String sql = "SELECT * FROM vending_items;";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -46,7 +46,7 @@ public class JdbcVendingItemDao implements VendingItemDao {
     public VendingItem getVendingItemById(int id) {
 
         VendingItem vendingItem = new VendingItem();
-        String sql = "SELECT * FROM vending_machine WHERE item_id = ?;";
+        String sql = "SELECT * FROM vending_items WHERE id = ?;";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
@@ -64,7 +64,7 @@ public class JdbcVendingItemDao implements VendingItemDao {
 
     private VendingItem mapResultsToVendingItem(SqlRowSet results){
         return new VendingItem(
-                results.getInt("item_id"),
+                results.getInt("id"),
                 results.getString("name"),
                 results.getString("type"),
                 results.getInt("price"),

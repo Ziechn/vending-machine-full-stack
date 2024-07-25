@@ -56,19 +56,19 @@ const router = createRouter({
   routes: routes
 });
 
-router.beforeEach((to) => {
+// router.beforeEach((to) => {
 
-  // Get the Vuex store
-  const store = useStore();
+//   // Get the Vuex store
+//   const store = useStore();
 
-  // Determine if the route requires Authentication
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+//   // Determine if the route requires Authentication
+//   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
 
-  // If it does and they are not logged in, send the user to "/login"
-  if (requiresAuth && store.state.token === '') {
-    return {name: "login"};
-  }
-  // Otherwise, do nothing and they'll go to their next destination
-});
+//   // If it does and they are not logged in, send the user to "/login"
+//   if (requiresAuth && store.state.token === '') {
+//     return {name: "login"};
+//   }
+//   // Otherwise, do nothing and they'll go to their next destination
+// });
 
 export default router;
