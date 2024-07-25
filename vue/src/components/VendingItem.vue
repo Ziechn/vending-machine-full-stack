@@ -20,7 +20,6 @@ export default {
     created() {
         VendingMachineService.getVendingItemById(this.id).then((response) => {
             if (response.status == 200){
-                console.log(response.data);
                 this.item = response.data;
             }
         }).catch((error) => {

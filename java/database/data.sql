@@ -3,6 +3,9 @@ BEGIN TRANSACTION;
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
+INSERT INTO wallet (user_id, balance) VALUES (1,0);
+INSERT INTO wallet (user_id, balance) VALUES (2,0);
+
 INSERT INTO vending_items (name, type, price, inventory)
 VALUES
 ('Potato Crisps', 'Chip', 305, 5),

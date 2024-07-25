@@ -1,5 +1,5 @@
 <template>
-  Wallet: {{ wallet }}
+  Wallet: {{ getWalletBalance }}
   <button v-on:click="addOneDollarToWallet">Add $1</button>
   <button v-on:click="addFiveDollarsToWallet">Add $5</button>
   <button v-on:click="addTenDollarsToWallet">Add $10</button>
@@ -14,16 +14,21 @@ export default {
     },
     methods: {
         addOneDollarToWallet() {
-            this.wallet++;
-            console.log(this.wallet);
+            this.wallet += 100;
         },
         addFiveDollarsToWallet(){
-            this.wallet += 5;
-            console.log(this.wallet);
+            this.wallet += 500;
         },
         addTenDollarsToWallet(){
-            this.wallet += 10;
-            console.log(this.wallet);
+            this.wallet += 1000;
+            
+        }
+    },
+    computed: {
+        getWalletBalance(){
+            let newBalance = this.wallet / 100;
+            console.log(newBalance);
+            return newBalance;
         }
     }
 }
