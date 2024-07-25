@@ -2,15 +2,18 @@ package com.techelevator.model;
 
 public class Wallet {
     private int id;
+    private int userId;
     private int balance;
 
     public Wallet(){
         id = -1;
+        userId = 0;
         balance = 0;
     }
 
-    public Wallet(int id, int balance) {
+    public Wallet(int id, int userId, int balance) {
         this.id = id;
+        this.userId = userId;
         this.balance = balance;
     }
 
@@ -20,6 +23,14 @@ public class Wallet {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getBalance() {
