@@ -8,6 +8,7 @@
             <div>
                 <!-- Wallet -->
                  <Wallet/>
+                 <SelectedItem/>
             </div>
         </div>
     </div>
@@ -17,11 +18,13 @@
 import VendingItem from './VendingItem.vue';
 import VendingMachineService from '../services/VendingMachineService';
 import Wallet from './Wallet.vue';
+import SelectedItem from './SelectedItem.vue';
 
 export default {
     components: {
         VendingItem,
-        Wallet
+        Wallet,
+        SelectedItem
     },
     data() {
         return {

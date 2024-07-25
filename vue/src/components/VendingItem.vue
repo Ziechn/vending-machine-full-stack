@@ -1,5 +1,5 @@
 <template>
-  <div class="vending-item">
+  <div class="vending-item" v-on:click="setCurrentItem">
     <h3>{{ item.type }}</h3>
   </div>
 </template>
@@ -22,6 +22,11 @@ export default {
         }).catch((error) => {
             console.log(error)
         })
+    },
+    methods: {
+        setCurrentItem(){
+            this.$store.commit("SET_CURRENT_ITEM", this.item);
+        }
     }
 }
 </script>
