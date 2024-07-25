@@ -1,9 +1,6 @@
 <template>
   <div class="vending-item">
-    <h2>{{ item.name }}</h2>
     <h3>{{ item.type }}</h3>
-    <h2>{{ item.price }}</h2>
-    <p>{{ item.inventory }}</p>
   </div>
 </template>
 
@@ -31,15 +28,15 @@ export default {
 
 <style scoped>
 .vending-item{
-    width: 170px;
-    height: 170px;
+    width: 100px;
+    height: 100px;
     background-color: darkgrey;
     color: whitesmoke;
     border-style: solid;
     border-color: black;
     border-radius: 5px;
     border-width: 1px;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
 }
 h3 {

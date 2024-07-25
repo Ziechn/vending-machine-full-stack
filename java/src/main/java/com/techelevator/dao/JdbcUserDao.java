@@ -19,9 +19,11 @@ import com.techelevator.model.User;
 public class JdbcUserDao implements UserDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private WalletDao walletDao;
 
-    public JdbcUserDao(JdbcTemplate jdbcTemplate) {
+    public JdbcUserDao(JdbcTemplate jdbcTemplate, WalletDao walletDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.walletDao = walletDao;
     }
 
     @Override
@@ -85,6 +87,9 @@ public class JdbcUserDao implements UserDao {
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
+
+        walletDao.createWallet(newUser.getId());
+
         return newUser;
     }
 
