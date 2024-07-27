@@ -1,6 +1,7 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS vending_items;
+DROP TABLE IF EXISTS orders
 DROP TABLE IF EXISTS wallet;
 DROP TABLE IF EXISTS users;
 
@@ -18,6 +19,14 @@ CREATE TABLE wallet (
     balance INT NOT NULL,
     CONSTRAINT PK_wallet_id PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+CREATE TABLE orders (
+    id SERIAL,
+    user_id INT NOT NULL,
+    vending_item_id INT NOT NULL,
+    date DATE NOT NULL,
+    total INT NOT NULL
 );
 
 CREATE TABLE vending_items (

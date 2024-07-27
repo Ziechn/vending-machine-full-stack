@@ -6,6 +6,9 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 INSERT INTO wallet (user_id, balance) VALUES (1,0);
 INSERT INTO wallet (user_id, balance) VALUES (2,0);
 
+INSERT INTO orders (user_id, vending_item_id, date, total)
+VALUES (1, 1, '2024-07-07', 305);
+
 INSERT INTO vending_items (name, type, price, inventory)
 VALUES
 ('Potato Crisps', 'Chip', 305, 5),
