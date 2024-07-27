@@ -27,7 +27,7 @@ public class JdbcVendingItemDao implements VendingItemDao {
     public List<VendingItem> getAllVendingItems() {
 
         List<VendingItem> vendingItems = new ArrayList<>();
-        String sql = "SELECT * FROM vending_items;";
+        String sql = "SELECT * FROM vending_items ORDER BY id ASC;";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);

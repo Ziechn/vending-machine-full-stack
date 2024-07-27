@@ -1,8 +1,13 @@
 <template>
-  Wallet: {{ calculateWalletBalance }}
-  <button v-on:click="addOneDollarToWallet">Add $1</button>
-  <button v-on:click="addFiveDollarsToWallet">Add $5</button>
-  <button v-on:click="addTenDollarsToWallet">Add $10</button>
+    <div class="wallet-window">
+        Wallet: {{ calculateWalletBalance }}
+    </div>
+    <div class="add-money">
+        Add $:<button v-on:click="addOneDollarToWallet">$1</button>
+        <button v-on:click="addFiveDollarsToWallet">$5</button>
+        <button v-on:click="addTenDollarsToWallet">$10</button>
+    </div>
+    
 </template>
 
 <script>
@@ -78,5 +83,34 @@ export default {
 </script>
 
 <style>
-
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.8em;
+}
+button {
+    height: 35px;
+    width: 35px;
+    margin-left: 10px;
+}
+.wallet-window {
+    font-size: 0.8em;
+    background-color:black;
+    width: 180px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    color: red;
+    border-radius: 7px;
+    border-style: solid;
+    border-color: gray;
+}
+.add-money {
+    text-align: center;
+    width: 180px;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
 </style>
