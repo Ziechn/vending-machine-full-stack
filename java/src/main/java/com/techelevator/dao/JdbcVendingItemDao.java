@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Purchase;
 import com.techelevator.model.VendingItem;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -60,6 +61,22 @@ public class JdbcVendingItemDao implements VendingItemDao {
         }
 
         return vendingItem;
+    }
+
+    @Override
+    public int purchaseVendingItem(Purchase purchase){
+        int newInventory = getVendingItemById(purchase.getVendingItemId()).getInventory() - 1;
+        String sql = "UPDATE vending_items SET inventory = ? WHERE id = ?;";
+
+        try {
+            jdbcTemplate.update(sql, newInventory, purchase.getVendingItemId());
+        } catch (CannotGetJdbcConnectionException e){
+            throw new DaoException(LocalDateTime.now() + " [Jdbc Vending Item] Cannot access database.");
+        } catch (DataIntegrityViolationException e){
+            throw new DaoException(LocalDateTime.now() + " [Jdbc Vending Item] Cannot purchase vending item.");
+        }
+
+        return getVendingItemById(purchase.getVendingItemId()).getInventory();
     }
 
     private VendingItem mapResultsToVendingItem(SqlRowSet results){

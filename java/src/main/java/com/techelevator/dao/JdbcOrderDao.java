@@ -2,6 +2,9 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Order;
+import com.techelevator.model.Purchase;
+import com.techelevator.model.VendingItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -102,6 +105,36 @@ public class JdbcOrderDao implements OrderDao {
         }
 
         return orders;
+    }
+
+    @Override
+    public Order purchaseOrder(Purchase purchase){
+        int orderId;
+
+        // Add order into the database...
+        String sql = "INSERT INTO orders (user_id, vending_item_id, total, date) VALUES (?, ?, ?, ?) RETURNING id;";
+
+        try {
+            orderId = template.queryForObject(
+                    sql,
+                    int.class,
+                    purchase.getUserId(),
+                    purchase.getVendingItemId(),
+                    purchase.getPurchasePrice(),
+                    purchase.getDate()
+            );
+        } catch (CannotGetJdbcConnectionException e){
+            throw new DaoException(LocalDateTime.now() + " [JDBC Order DAO] Cannot access database.");
+        } catch (DataIntegrityViolationException e){
+            throw new DaoException(LocalDateTime.now() + " [JDBC Order DAO] Error adding order.");
+        }
+
+        // Update the order with the new balance and inventory levels.
+        Order order = getOrderByOrderId(orderId);
+        order.setNewWalletBalance(purchase.getNewWalletBalance());
+        order.setNewInventory(purchase.getNewInventory());
+
+        return order;
     }
 
     private Order mapRowToOrder(SqlRowSet results){

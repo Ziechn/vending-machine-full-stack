@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Purchase;
 import com.techelevator.model.Wallet;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -89,6 +90,24 @@ public class JdbcWalletDao implements WalletDao{
             throw new DaoException(LocalDateTime.now() + " [JDBC Wallet DAO] Bad data.");
         }
         return balance;
+    }
+
+    @Override
+    public int purchaseVendingItem(Purchase purchase) {
+        int vendingItemPrice = purchase.getPurchasePrice();
+        int newBalance = getWalletBalanceByUserId(purchase.getUserId()) - vendingItemPrice;
+
+        String sql = "UPDATE wallet SET balance = ? WHERE user_id = ?;";
+
+        try {
+            jdbcTemplate.update(sql, newBalance, purchase.getUserId());
+        } catch (CannotGetJdbcConnectionException e){
+            throw new DaoException(LocalDateTime.now() + " [JDBC Wallet DAO] Cannot connect to the database");
+        } catch (DataIntegrityViolationException e){
+            throw new DaoException(LocalDateTime.now() + " [JDBC Wallet DAO] Cannot subtract from wallet balance during purchase.");
+        }
+
+        return getWalletBalanceByUserId(purchase.getUserId());
     }
 
 

@@ -7,6 +7,8 @@ public class Order {
     private int id;
     private int userId;
     private int vendingItemId;
+    private int newWalletBalance;
+    private int newInventory;
     private int total;
     private Date date;
 
@@ -34,6 +36,14 @@ public class Order {
         this.vendingItemId = vendingItemId;
     }
 
+    public int getNewWalletBalance() {
+        return newWalletBalance;
+    }
+
+    public void setNewWalletBalance(int newWalletBalance) {
+        this.newWalletBalance = newWalletBalance;
+    }
+
     public int getTotal() {
         return total;
     }
@@ -48,5 +58,13 @@ public class Order {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getNewInventory() {
+        return newInventory;
+    }
+
+    public void setNewInventory(int newInventory) {
+        this.newInventory = newInventory;
     }
 }
