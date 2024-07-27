@@ -1,0 +1,30 @@
+Endpoints and JSON Object - Orders
+
+/order
+Checks inventory, and the purchase price against the wallet balance.
+Subtracts 1 from the inventory, and the purchase price from the wallet balance.
+Returns an receipt in the form of an Order JSON object.
+Expects: Purchase JSON object.
+Returns: Order JSON object.
+
+JSON Objects
+Expected (Purchase JSON Object)
+{
+	"vendingItemId" : 1,
+	"userId" : 1,
+	"walletBalance" : 1,
+	"purchasePrice" : 1,
+	"date" : '2024-07-27'
+}
+
+Returns (Order JSON Object)
+{
+	"id" : 1,
+	"userId" : 1,
+	"vendingItemId: 1,
+	"total" : 1,
+	"date" : '2024-07-27',
+	"newWalletBalance" : 1,
+	"newInventory" : 1
+}
+

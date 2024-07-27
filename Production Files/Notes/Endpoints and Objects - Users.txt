@@ -1,0 +1,42 @@
+Endpoints and Objects - Users
+
+/register
+Post
+Registers a new user account
+Expects: RegisterUserDto
+Returns: Nothing.
+
+/login
+Post
+Logs into the application
+Expects: LoginDto
+Returns: LoginResponseDto
+
+JSON Objects
+RegisterUserDto JSON Object
+{
+	"username" : "bob",
+	"password" : "bob",
+	"confirmPassword" : "bob",
+	"role" : "user"
+}
+
+LoginDto
+{
+    "username" : "bob",
+    "password" : "bob"
+}
+
+LoginResponseDto
+{
+    "token": "",
+    "user": {
+        "id": 1,
+        "username": "username",
+        "authorities": [
+            {
+                "name": "ROLE_USER"
+            }
+        ]
+    }
+}

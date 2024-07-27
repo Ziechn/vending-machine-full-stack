@@ -7,7 +7,7 @@ INSERT INTO wallet (user_id, balance) VALUES (1,0);
 INSERT INTO wallet (user_id, balance) VALUES (2,0);
 
 INSERT INTO orders (user_id, vending_item_id, date, total)
-VALUES (1, 1, '2024-07-07', 305);
+VALUES (1, 1, '2024-07-27', 1);
 
 INSERT INTO vending_items (name, type, price, inventory)
 VALUES

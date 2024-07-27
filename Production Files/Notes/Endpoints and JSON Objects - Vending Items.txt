@@ -1,0 +1,24 @@
+Endpoints and JSON Objects - Vending Items
+
+/all-vending-items
+GET
+Gets a list of all items in the vending machine.
+Expects: Nothing.
+Returns: An array of Vending Items.
+
+/vending-item/{id}
+GET
+Returns the information for 1 specific Vending Item
+Expects: An id path variable
+Returns: A Vending Item JSON object.
+
+JSON Objects:
+Vending Item
+{
+    "id": 1,
+    "name": "Vending Item Name",
+    "type": "Vending Item Type",
+    "price": 1,
+    "inventory": 1,
+    "imageUrl": null
+}

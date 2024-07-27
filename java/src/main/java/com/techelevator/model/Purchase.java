@@ -3,13 +3,17 @@ package com.techelevator.model;
 import java.util.Date;
 
 public class Purchase {
+
+    // Expected data...
     private int vendingItemId;
     private int userId;
     private int walletBalance;
     private int purchasePrice;
+    private Date date;
+
+    // Pass through data...
     private int newWalletBalance;
     private int newInventory;
-    private Date date;
 
     public int getVendingItemId() {
         return vendingItemId;

@@ -4,13 +4,17 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Order {
+
+    // Database data:
     private int id;
     private int userId;
     private int vendingItemId;
-    private int newWalletBalance;
-    private int newInventory;
     private int total;
     private Date date;
+
+    // Returned data:
+    private int newWalletBalance;
+    private int newInventory;
 
     public int getId() {
         return id;

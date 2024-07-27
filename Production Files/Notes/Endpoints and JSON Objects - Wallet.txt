@@ -1,0 +1,26 @@
+Endpoints and JSON Objects - Wallet
+
+/get-wallet
+GET
+Returns a wallet base on the user ID.
+Expects: The Principal.
+Returns: Wallet JSON object.
+
+/get-wallet-balance
+GET
+Returns an integer of a wallet based on a user ID.
+Expects: The Principal.
+Returns: An integer.
+
+/update-wallet-balance
+POST
+Updates the wallet based on the principal and a wallet object.
+Expects: The Principal and a wallet JSON object.
+Returns: An integer.
+
+JSON Objects:
+{
+	"id" : 1,
+	"userId" : 1,
+	"balance" : 1
+}
