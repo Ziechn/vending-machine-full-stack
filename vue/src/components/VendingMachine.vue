@@ -55,7 +55,7 @@ export default {
 }
 .vending_machine {
     display: flex;
-    width: 800px;
+
     height: 600px;
     background-color: darkgray;
     padding: 20px;
@@ -67,5 +67,6 @@ export default {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 </style>

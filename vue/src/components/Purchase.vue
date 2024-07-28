@@ -64,6 +64,11 @@ export default {
 </script>
 
 <style scoped>
+button {
+    height: 50px;
+    width: 100%;
+    margin: 0px;
+}
 .purchase{
     margin-top: 20px;
     margin-left: 20px;

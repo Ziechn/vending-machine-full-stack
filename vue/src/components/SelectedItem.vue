@@ -26,8 +26,8 @@ export default {
   background-color:black;
   width: 180px;
   height: 100px;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
   padding-top: 20px;
   padding-left: 20px;
   color: red;

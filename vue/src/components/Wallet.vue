@@ -1,4 +1,5 @@
 <template>
+    <span class="username">Welcome, {{ $store.state.user.username }}!</span>
     <div class="wallet-window">
         Wallet: &dollar;{{ calculateWalletBalance }}
     </div>
@@ -91,6 +92,13 @@ button {
     width: 35px;
     margin-left: 10px;
 }
+.username {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 20px;
+    text-align: center;
+}
 .wallet-window {
     font-size: 0.8em;
     font-weight: bold;
@@ -98,7 +106,7 @@ button {
     width: 180px;
     height: 40px;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
     padding-top: 20px;
     padding-left: 20px;
     color: red;
@@ -110,7 +118,6 @@ button {
     text-align: center;
     width: 180px;
     margin-top: 20px;
-    margin-left: 15px;
-    margin-bottom: 20px;
+    margin-left: 20px;
 }
 </style>
