@@ -6,7 +6,8 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: currentUser || {},
-      currentItem: {}
+      currentItem: {},
+      wallet: {}
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -27,6 +28,12 @@ export function createStore(currentToken, currentUser) {
       },
       SET_CURRENT_ITEM(state, vendingItem){
         state.currentItem = vendingItem;
+      },
+      SET_WALLET_BALANCE(state, balance){
+        state.wallet.balance = balance;
+      },
+      SET_CURRENT_ITEM_INVENTORY(state, newInventory){
+        state.currentItem.inventory = newInventory;
       }
     },
   });

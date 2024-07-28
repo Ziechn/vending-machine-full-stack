@@ -9,6 +9,7 @@
                 <!-- Wallet -->
                  <Wallet/>
                  <SelectedItem/>
+                 <Purchase/>
             </div>
         </div>
     </div>
@@ -19,12 +20,14 @@ import VendingItem from './VendingItem.vue';
 import VendingMachineService from '../services/VendingMachineService';
 import Wallet from './Wallet.vue';
 import SelectedItem from './SelectedItem.vue';
+import Purchase from './Purchase.vue';
 
 export default {
     components: {
         VendingItem,
         Wallet,
-        SelectedItem
+        SelectedItem,
+        Purchase
     },
     data() {
         return {
