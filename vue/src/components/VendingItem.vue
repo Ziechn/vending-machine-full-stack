@@ -1,6 +1,6 @@
 <template>
   <div class="vending-item" v-on:click="setCurrentItem">
-    <h3>{{ item.type }}</h3>
+    <h3>{{ item.name }}</h3>
   </div>
 </template>
 
