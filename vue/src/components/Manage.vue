@@ -82,7 +82,7 @@ div {
     border-radius: 5px;
     width: 400px;
     overflow: scroll;
-    padding-left: 10px;
+    padding-left: 20px;
     color: #2f4858;
 }
 .bank {
@@ -91,8 +91,7 @@ div {
     background-color:black;
     width: 180px;
     height: 40px;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
     padding-top: 20px;
     padding-left: 20px;
     color: #ee005f;

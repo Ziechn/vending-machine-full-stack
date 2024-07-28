@@ -35,10 +35,10 @@ export default {
 .vending-item{
     width: 100px;
     height: 100px;
-    background-color: #743600;
-    color: #cc7f00;
+    background-color: #cd0047;
+    color: #ffffff;
     border-style: solid;
-    border-color: #743600;
+    border-color: #cd0047;
     border-radius: 5px;
     margin: 5px;
     padding: 10px;
@@ -46,16 +46,14 @@ export default {
     font-size: 0.8em;
 }
 .vending-item:hover {
-    background-color: #fff7d6;
-    color: #cc7f00;
+    background-color: #ff87b3;
     border-style: solid;
-    border-color: #743600;
+    border-color: #cd0047;
 }
 .vending-item:active {
-    background-color: #fff7d6;
-    color: #cc7f00;
+    background-color: #ff87b3;
     border-style: solid;
-    border-color: #fff7d6;
+    border-color: #ff87b3;
 }
 h3 {
     margin: 2px;
