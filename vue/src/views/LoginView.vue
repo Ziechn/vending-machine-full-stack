@@ -1,5 +1,6 @@
 <template>
-  <div id="login">
+  <div class="flex-container">
+    <div id="login">
     <form v-on:submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
@@ -20,6 +21,7 @@
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
+  </div>
   </div>
 </template>
 
@@ -66,5 +68,22 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+input {
+  border-radius: 5px;
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+#login {
+  background-color: #c0daee;
+  border-style: solid;
+  border-color: #516a7b;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 </style>

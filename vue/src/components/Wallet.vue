@@ -109,10 +109,10 @@ button {
     margin-left: 20px;
     padding-top: 20px;
     padding-left: 20px;
-    color: red;
+    color: #ee005f;
     border-radius: 7px;
     border-style: solid;
-    border-color: gray;
+    border-color: #516a7b;
 }
 .add-money {
     text-align: center;

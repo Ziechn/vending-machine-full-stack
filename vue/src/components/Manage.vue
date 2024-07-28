@@ -49,19 +49,25 @@ div {
 }
 .flex-seal-liquid{
     width: 100vw;
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .vending_machine {
     display: flex;
-    width: 800px;
+
     height: 600px;
-    background-color: darkgray;
     padding: 20px;
+
+    background-color: #99b3c6;
+    border-style: solid;
+    border-color: #516a7b;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .shelf {
-    background-color: whitesmoke;
+    background-color: #c0daee;
     width: 600px;
     height: 90%;
     padding: 20px;
@@ -70,13 +76,14 @@ div {
 }
 .all-orders {
     font-size: 0.75em;
-    background-color: white;
+    background-color: whitesmoke;
     border-style: solid;
-    border-color: black;
+    border-color: #2f4858;
     border-radius: 5px;
     width: 400px;
     overflow: scroll;
     padding-left: 10px;
+    color: #2f4858;
 }
 .bank {
     font-size: 0.8em;
@@ -88,9 +95,9 @@ div {
     margin-left: 10px;
     padding-top: 20px;
     padding-left: 20px;
-    color: red;
+    color: #ee005f;
     border-radius: 7px;
     border-style: solid;
-    border-color: gray;
+    border-color: #2f4858;
 }
 </style>

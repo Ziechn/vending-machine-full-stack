@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Manage Vending Machine</h1>
     <Manage/>
   </div>
 </template>

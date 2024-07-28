@@ -1,5 +1,6 @@
 <template>
-  <div id="register" class="text-center">
+  <div class="flex-container">
+    <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
@@ -24,6 +25,7 @@
       <button type="submit">Create Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
+  </div>
   </div>
 </template>
 
@@ -83,5 +85,22 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+input {
+  border-radius: 5px;
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+#register {
+  background-color: #c0daee;
+  border-style: solid;
+  border-color: #516a7b;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 </style>

@@ -9,3 +9,17 @@
     <router-view />
   </div>
 </template>
+
+<style>
+body {
+  background-color: #516a7b;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #2f4858;
+}
+a {
+  color: #fff7d6;
+}
+a:visited {
+  color: #00c6af;
+}
+</style>

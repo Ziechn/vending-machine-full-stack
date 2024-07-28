@@ -49,6 +49,7 @@ export default {
 <style scoped>
 .flex-seal-liquid{
     width: 100vw;
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,16 +58,24 @@ export default {
     display: flex;
 
     height: 600px;
-    background-color: darkgray;
     padding: 20px;
+
+    background-color: #99b3c6;
+    border-style: solid;
+    border-color: #516a7b;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .shelf {
-    background-color: whitesmoke;
     width: 600px;
     height: 90%;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: whitesmoke;
+    border-style: solid;
+    border-color: #516a7b;
+    border-radius: 5px;
 }
 </style>
