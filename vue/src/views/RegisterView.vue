@@ -17,6 +17,10 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
+      <div class="form-input-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" v-model="user.title">
+      </div>
       <button type="submit">Create Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
@@ -34,6 +38,7 @@ export default {
         password: '',
         confirmPassword: '',
         role: 'user',
+        title: ''
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',

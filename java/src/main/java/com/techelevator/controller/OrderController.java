@@ -1,16 +1,17 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.OrderDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.dao.VendingItemDao;
 import com.techelevator.dao.WalletDao;
 import com.techelevator.model.Order;
 import com.techelevator.model.Purchase;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -18,11 +19,13 @@ public class OrderController {
     private OrderDao orderDao;
     private VendingItemDao vendingItemDao;
     private WalletDao walletDao;
+    private UserDao userDao;
 
-    public OrderController(OrderDao orderDao, VendingItemDao vendingItemDao, WalletDao walletDao){
+    public OrderController(OrderDao orderDao, VendingItemDao vendingItemDao, WalletDao walletDao, UserDao userDao){
         this.orderDao = orderDao;
         this.vendingItemDao = vendingItemDao;
         this.walletDao = walletDao;
+        this.userDao = userDao;
     }
 
     @PostMapping(path = "/order")
@@ -55,5 +58,21 @@ public class OrderController {
 
             return orderDao.purchaseOrder(purchase);
         }
+    }
+
+    @GetMapping(path = "/get-all-orders")
+    public List<Order> getAllOrders(){
+        return orderDao.getAllOrders();
+    }
+
+    @GetMapping(path = "/get-my-orders")
+    public List<Order> getMyOrders(Principal principal){
+        int userId = userDao.getUserByUsername(principal.getName()).getId();
+        return orderDao.getOrdersByUserId(userId);
+    }
+
+    @GetMapping(path = "/get-order/{id}")
+    public Order getOrderByOrderId(@PathVariable int id){
+        return orderDao.getOrderByOrderId(id);
     }
 }

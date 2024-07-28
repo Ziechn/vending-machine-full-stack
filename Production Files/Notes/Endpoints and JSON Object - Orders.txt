@@ -7,6 +7,22 @@ Returns an receipt in the form of an Order JSON object.
 Expects: Purchase JSON object.
 Returns: Order JSON object.
 
+/get-all-orders
+GET
+Returns an array of all orders.
+Expects: Nothing.
+Returns: An array of Order JSON objects.
+
+/get-my-orders
+Returns an array of all my orders.
+Expects: The Principal
+Returns: An array of Order JSON objects.
+
+/get-order/{id}
+Returns an order.
+Expects: An order id in the path.
+Returns: An Order JSON object.
+
 JSON Objects
 Expected (Purchase JSON Object)
 {
