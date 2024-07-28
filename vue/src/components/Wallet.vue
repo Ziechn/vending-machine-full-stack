@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style scoped>
-body {
+div {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 0.8em;
 }
@@ -93,6 +93,7 @@ button {
 }
 .wallet-window {
     font-size: 0.8em;
+    font-weight: bold;
     background-color:black;
     width: 180px;
     height: 40px;

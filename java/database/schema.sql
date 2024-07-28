@@ -4,6 +4,12 @@ DROP TABLE IF EXISTS vending_items;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS wallet;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS bank;
+
+CREATE TABLE bank (
+    id SERIAL,
+    balance INT NOT NULL
+);
 
 CREATE TABLE users (
 	user_id SERIAL,

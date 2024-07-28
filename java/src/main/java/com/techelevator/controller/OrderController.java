@@ -1,9 +1,6 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.OrderDao;
-import com.techelevator.dao.UserDao;
-import com.techelevator.dao.VendingItemDao;
-import com.techelevator.dao.WalletDao;
+import com.techelevator.dao.*;
 import com.techelevator.model.Order;
 import com.techelevator.model.Purchase;
 import org.springframework.http.HttpStatus;
@@ -20,12 +17,14 @@ public class OrderController {
     private VendingItemDao vendingItemDao;
     private WalletDao walletDao;
     private UserDao userDao;
+    private BankDao bankDao;
 
-    public OrderController(OrderDao orderDao, VendingItemDao vendingItemDao, WalletDao walletDao, UserDao userDao){
+    public OrderController(OrderDao orderDao, VendingItemDao vendingItemDao, WalletDao walletDao, UserDao userDao, BankDao bankDao){
         this.orderDao = orderDao;
         this.vendingItemDao = vendingItemDao;
         this.walletDao = walletDao;
         this.userDao = userDao;
+        this.bankDao = bankDao;
     }
 
     @PostMapping(path = "/order")
@@ -55,6 +54,9 @@ public class OrderController {
             purchase.setNewWalletBalance(walletDao.purchaseVendingItem(purchase));
             // And subtracting 1 from the vending item inventory.
             purchase.setNewInventory(vendingItemDao.purchaseVendingItem(purchase));
+
+            // Add it to the bank!
+            bankDao.addFunds(purchase.getPurchasePrice());
 
             return orderDao.purchaseOrder(purchase);
         }
