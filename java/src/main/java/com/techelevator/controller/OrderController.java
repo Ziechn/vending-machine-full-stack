@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -58,23 +59,28 @@ public class OrderController {
             // Add it to the bank!
             bankDao.addFunds(purchase.getPurchasePrice());
 
+            System.out.println(LocalDateTime.now() + " A new order has been created by " + userDao.getUserById(purchase.getUserId()));
+
             return orderDao.purchaseOrder(purchase);
         }
     }
 
     @GetMapping(path = "/get-all-orders")
-    public List<Order> getAllOrders(){
+    public List<Order> getAllOrders(Principal principal){
+        System.out.println(LocalDateTime.now() + " All orders have been accessed by " + principal.getName());
         return orderDao.getAllOrders();
     }
 
     @GetMapping(path = "/get-my-orders")
     public List<Order> getMyOrders(Principal principal){
         int userId = userDao.getUserByUsername(principal.getName()).getId();
+        System.out.println(LocalDateTime.now() + " All orders for " + principal.getName() + " have been accessed.");
         return orderDao.getOrdersByUserId(userId);
     }
 
     @GetMapping(path = "/get-order/{id}")
     public Order getOrderByOrderId(@PathVariable int id){
+        System.out.println(LocalDateTime.now() + "Order information for order ID: " + id + " has been accessed.");
         return orderDao.getOrderByOrderId(id);
     }
 }

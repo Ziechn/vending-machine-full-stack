@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 
 @RestController
 @CrossOrigin
@@ -23,13 +24,15 @@ public class BankController {
     }
 
     @GetMapping(path = "/get-bank-balance")
-    public int getBankBalance(){
+    public int getBankBalance(Principal principal){
+        System.out.println(LocalDateTime.now() + " Bank balance has been accessed by " + principal.getName());
         return bankDao.getBankBalance();
     }
 
     @PostMapping(path = "/withdrawal-bank-balance")
     public int withdrawalBankBalance(Principal principal){
         int userId = userDao.getUserByUsername(principal.getName()).getId();
+        System.out.println(LocalDateTime.now() + " Bank balance has been withdrawn by " + principal.getName());
         return bankDao.withdrawalBankBalance(userId);
     }
 }

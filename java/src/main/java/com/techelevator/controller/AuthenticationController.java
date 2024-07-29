@@ -20,6 +20,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.time.LocalDateTime;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -51,6 +53,8 @@ public class AuthenticationController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
         }
 
+        System.out.println(LocalDateTime.now() + " User: " + user.getUsername() + " has logged in.");
+
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
         return new ResponseEntity<>(new LoginResponseDto(jwt, user), httpHeaders, HttpStatus.OK);
@@ -64,6 +68,7 @@ public class AuthenticationController {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User already exists.");
             } else {
                 userDao.createUser(newUser);
+                System.out.println(LocalDateTime.now() + " A new user has been created. Username: " + newUser.getUsername());
             }
         }
         catch (DaoException e) {
