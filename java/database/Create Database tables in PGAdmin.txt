@@ -1,0 +1,82 @@
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS vending_items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS wallet;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS bank;
+
+CREATE TABLE bank (
+    id SERIAL,
+    balance INT NOT NULL
+);
+
+CREATE TABLE users (
+	user_id SERIAL,
+	username varchar(50) NOT NULL UNIQUE,
+	password_hash varchar(200) NOT NULL,
+	role varchar(50) NOT NULL,
+	title VARCHAR,
+	CONSTRAINT PK_user PRIMARY KEY (user_id)
+);
+
+CREATE TABLE wallet (
+    id SERIAL,
+    user_id INT NOT NULL,
+    balance INT NOT NULL,
+    CONSTRAINT PK_wallet_id PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+CREATE TABLE orders (
+    id SERIAL,
+    user_id INT NOT NULL,
+    vending_item_id INT NOT NULL,
+    date DATE NOT NULL,
+    total INT NOT NULL
+);
+
+CREATE TABLE vending_items (
+    id SERIAL,
+    name VARCHAR NOT NULL,
+    type VARCHAR NOT NULL,
+    price INT NOT NULL,
+    inventory INT NOT NULL,
+    CONSTRAINT PK_item PRIMARY KEY (id)
+);
+
+COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+
+INSERT INTO bank (balance) VALUES (100);
+
+INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+
+INSERT INTO wallet (user_id, balance) VALUES (1,0);
+INSERT INTO wallet (user_id, balance) VALUES (2,0);
+
+INSERT INTO orders (user_id, vending_item_id, date, total)
+VALUES (1, 1, '2024-07-27', 100);
+
+INSERT INTO vending_items (name, type, price, inventory)
+VALUES
+('Potato Crisps', 'Chip', 305, 5),
+('Stackers', 'Chip', 145, 5),
+('Grain Waves', 'Chip', 275, 5),
+('Cloud Popcorn', 'Chip', 365, 5),
+('Moonpie', 'Candy', 180, 5),
+('Cowtales', 'Candy', 150, 5),
+('Wonka Bar', 'Candy', 150, 5),
+('Crunchie', 'Candy', 175, 5),
+('Cola', 'Drink', 125, 5),
+('Dr. Salt', 'Drink', 150, 5),
+('Mountain Melter', 'Drink', 150, 5),
+('Heavy', 'Drink', 150, 5),
+('U-Chews', 'Gum', 85, 5),
+('Little League Chew', 'Gum', 95, 5),
+('Chiclets', 'Gum', 75, 5),
+('Triplemint', 'Gum', 75, 5);
+
+COMMIT TRANSACTION;
