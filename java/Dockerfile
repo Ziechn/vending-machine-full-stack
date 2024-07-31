@@ -17,13 +17,13 @@ WORKDIR /app
 COPY . .
 
 # Make sure mvnw is executable
-RUN chmod +x java/mvnw
+RUN chmod +x mvnw
 
 # Install Node.js dependencies
-RUN cd java && npm install
+RUN npm install
 
 # Build the application
-RUN cd java && ./mvnw clean install
+RUN ./mvnw clean install
 
 # Command to run your application
-CMD ["java/mvnw", "spring-boot:run"]
+CMD ["mvnw", "spring-boot:run"]
