@@ -1,14 +1,5 @@
-# Use an official Node.js image as the base image
-FROM node:20
-
-# Install Java (e.g., OpenJDK 17)
-RUN apt-get update && \
-    apt-get install -y openjdk-17-jdk && \
-    apt-get clean;
-
-# Set JAVA_HOME environment variable
-ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
-ENV PATH $JAVA_HOME/bin:$PATH
+# Use an official OpenJDK image as the base image
+FROM openjdk:17-jdk
 
 # Set working directory
 WORKDIR /app
@@ -20,7 +11,7 @@ COPY . .
 RUN chmod +x mvnw
 
 # Build the application
-RUN mvnw clean install
+RUN ./mvnw clean install
 
 # Command to run your application
-CMD ["java/mvnw", "spring-boot:run"]
+CMD ["./mvnw", "spring-boot:run"]
