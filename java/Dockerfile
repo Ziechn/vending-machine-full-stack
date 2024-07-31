@@ -20,10 +20,10 @@ COPY . .
 RUN chmod +x java/src/mvnw
 
 # Install Node.js dependencies
-RUN cd java/src && npm install
+RUN cd java && npm install
 
 # Build the application
-RUN cd java/src && ./mvnw clean install
+RUN cd java && ./src/mvnw clean install
 
 # Command to run your application
 CMD ["java/src/mvnw", "spring-boot:run"]
