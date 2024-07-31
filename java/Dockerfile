@@ -19,9 +19,6 @@ COPY . .
 # Make sure mvnw is executable
 RUN chmod +x mvnw
 
-# Install Node.js dependencies
-RUN npm install
-
 # Build the application
 RUN ./mvnw clean install
 
