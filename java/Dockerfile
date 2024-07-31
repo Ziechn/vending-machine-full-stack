@@ -20,7 +20,7 @@ COPY . .
 RUN chmod +x mvnw
 
 # Build the application
-RUN ./mvnw clean install
+RUN mvnw clean install
 
 # Command to run your application
-CMD ["mvnw", "spring-boot:run"]
+CMD ["java/mvnw", "spring-boot:run"]
